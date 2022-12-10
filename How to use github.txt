@@ -1,0 +1,40 @@
+1. cd <path of folder from where you want to add files>
+
+2. git init       // to initialise an empty git repo, skip if already done b4
+
+3. git config --global user.name
+4. git config --global user.email  // to check if everything is correct
+5. git config --global user.name "Arjun"  // to configure your username
+6. git config --global user.email "smthng@xyz.com"  // to configure your email
+
+7. git add .    // to track all the files in the folder
+8. git add <name of individual file>   // to track individual file
+
+9. git rm <filename>   // remove tracked files 
+
+10. git commit <name of file> -m "Commit Message"      // to commit file
+11. git commit -a -m"your commit message here"         // to add and commit files in a single command
+
+12. git commit --amend   // amend your recent commmit message
+13.	                      **To edit a commit other than the most recent**
+	1.git rebase -i HEAD~n where n is no of commits before where u wanna change
+	2.editor pops up, change all "pick" keyword to "r" for files whose mesg u wanna change. Save the file.
+	3.Another editor pops up, now change the needed commit message and save file.
+	4.git push -f to make changes to github repo
+
+
+14. git remote add origin <http link of github repo>  // link github repo
+15. git remote -v                                     //verfies github repo
+
+16. git push -u origin master  // to push the committed changes to repo in github
+
+17. git status  // To check the status 
+
+18. git log    // Commit history 
+
+19. .gitignore    // version control will ignore these files
+
+20. git branch <branchname>     // create a new branch
+21. git checkout <branchname>   // navigate to a branch
+22. git branch                  // view all branches
+23. git branch -d <branchname>  // delete a branch 
