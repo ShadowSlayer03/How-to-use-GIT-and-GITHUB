@@ -13,28 +13,62 @@
 9. git rm <filename>   // remove tracked files 
 
 10. git commit <name of file> -m "Commit Message"      // to commit file
-11. git commit -a -m"your commit message here"         // to add and commit files in a single command
+11. git commit -a -m "your commit message here"         // to add and commit files in a single command
 
 12. git commit --amend   // amend your recent commmit message
+//	  To make changes to already committed files
+	  Make changes in code editor, save it and do "git add ."
+	  Now do "git commit --amend"   //
+
 13.	                      **To edit a commit other than the most recent**
 	1.git rebase -i HEAD~n where n is no of commits before where u wanna change
 	2.editor pops up, change all "pick" keyword to "r" for files whose mesg u wanna change. Save the file.
 	3.Another editor pops up, now change the needed commit message and save file.
 	4.git push -f to make changes to github repo
 
+14. git revert <SHA(7char) of commit> 
+//If lines of code were added, then revert will delete it and vice-versa and new commit is created with these changes
 
-14. git remote add origin <http link of github repo>  // link github repo
-15. git remote -v                                     //verfies github repo
+15. git remote add origin <http link of github repo>  // link github repo
+16. git remote -v                                     //verifies github repo
 
-16. git push -u origin master  // to push the committed changes to repo in github
+17. git push -u origin master  // to push the committed changes to repo in github
 
-17. git status  // To check the status 
+18. git status  // To check the status 
 
-18. git log    // Commit history 
+19. git log           // Commit history including author, date, time
 
-19. .gitignore    // version control will ignore these files
+    press f to move down by a full page
+	press d to move down by half page
+add --oneline flag to show only the SHA and commit messages of each commit
+add --stat flag to show what all changes were made to which all files
+add --patch flag to see exactly in which line of code the changes were made
+add --graph -all to see commits in all different branches
 
-20. git branch <branchname>     // create a new branch
-21. git checkout <branchname>   // navigate to a branch
-22. git branch                  // view all branches
-23. git branch -d <branchname>  // delete a branch 
+20. git tag -a <tagNAME>  // Tag added to latest commit. Tags are used to give addtl info which are not to be added in commit message 
+21. git tag -a <tagNAME> <SHA(7 char)>   //Tag will be added to the commit with the SHA given
+22. git log                             // To see which tag is associated with which commit
+
+23. .gitignore    // version control will ignore these files
+
+24. git diff     // same as git log -p but the difference is that it will show the changes happened in a file before committing
+
+25. git branch                  // view all branches
+26. git branch <branchname>     // create a new branch
+27. git checkout <branchname>   // navigate to a branch
+28. git branch -d <branchname>  // delete a branch 
+
+29. git merge <branchname> // While on a branch, merging with another branch will 
+                           // take the changes from that branch combine with this branch and create a new commit where the head points to.
+						   // For fast forward merges, there's no need for commit mesg but for divergent merges, there must be.
+
+	//Resolving merge conflicts//
+	** Merge conflict occurs when a same line is edited and committed in both branches so git doesn't
+	know which changes to keep track of.				   
+    ** It will appear in "git status" during merging and the code editor will also show the differences.
+	** Choose which change to keep and delete the other one, then make a new commit to resolve conflict. 
+
+30. git reset <SHA(7char) to which u want to move back> //This will perform the foll things based on the flags provided:
+	--mixed  // Default flag which moves the head pointer to where SHA commit is and move recent commit to working directory
+    --soft   //Move the head pointer to where SHA commit is and move recent commit to staging index
+	--hard   //Move the head pointer to where SHA commit is and erase the recent commit
