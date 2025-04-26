@@ -11,32 +11,34 @@
 8. git add <name of individual file>   // to track individual file
 
 9. git rm <filename>   // remove tracked files 
+10. git rm --cached <filename>   // remove files which were committed before
 
-10. git commit <name of file> -m "Commit Message"      // to commit file
-11. git commit -a -m "your commit message here"         // to add and commit files in a single command
+11. git commit <name of file> -m "Commit Message"      // to commit file
+12. git commit -a -m "your commit message here"         // to add and commit files in a single command(untracked files wont be added)
+13. git commit -A -m "your commit message here"         // to add and commit files in a single command(untracked file changes will also be added)
 
-12. git commit --amend   // amend your recent commmit message
+14. git commit --amend   // amend your recent commmit message
 //	  To make changes to already committed files
 	  Make changes in code editor, save it and do "git add ."
 	  Now do "git commit --amend"   //
 
-13.	                      **To edit a commit other than the most recent**
+15.	                      **To edit a commit other than the most recent**
 	1.git rebase -i HEAD~n where n is no of commits before where u wanna change
 	2.editor pops up, change all "pick" keyword to "r" for files whose mesg u wanna change. Save the file.
 	3.Another editor pops up, now change the needed commit message and save file.
 	4.git push -f to make changes to github repo
 
-14. git revert <SHA(7char) of commit> 
+16. git revert <SHA(7char) of commit> 
 //If lines of code were added, then revert will delete it and vice-versa and new commit is created with these changes
 
-15. git remote add origin <http link of github repo>  // link github repo
-16. git remote -v                                     //verifies github repo
+17. git remote add origin <http link of github repo>  // link github repo
+18. git remote -v                                     //verifies github repo
 
-17. git push -u origin master  // to push the committed changes to repo in github
+19. git push -u origin master  // to push the committed changes to repo in github
 
-18. git status  // To check the status 
+20. git status  // To check the status 
 
-19. git log           // Commit history including author, date, time
+21. git log           // Commit history including author, date, time
 
     press f to move down by a full page
 	press d to move down by half page
@@ -45,21 +47,21 @@ add --stat flag to show what all changes were made to which all files
 add --patch flag to see exactly in which line of code the changes were made
 add --graph -all to see commits in all different branches
 
-20. git tag -a <tagNAME>  // Tag added to latest commit. Tags are used to give addtl info which are not to be added in commit message 
-21. git tag -a <tagNAME> <SHA(7 char)>   //Tag will be added to the commit with the SHA given
-22. git log                             // To see which tag is associated with which commit
+22. git tag -a <tagNAME>  // Tag added to latest commit. Tags are used to give addtl info which are not to be added in commit message 
+23. git tag -a <tagNAME> <SHA(7 char)>   //Tag will be added to the commit with the SHA given
+24. git log                             // To see which tag is associated with which commit
 
-23. .gitignore    // version control will ignore these files
+25. .gitignore    // version control will ignore these files
 
-24. git diff     // same as git log -p but the difference is that it will show the changes happened in a file before committing
+26. git diff     // same as git log -p but the difference is that it will show the changes happened in a file before committing
 
-25. git branch                  // view all branches
-26. git branch -M main          // Changes the name of the current branch eg: master to main
-27. git branch <branchname>     // create a new branch
-28. git checkout <branchname>   // navigate to a branch
-29. git branch -d <branchname>  // delete a branch 
+27. git branch                  // view all branches
+28. git branch -M main          // Changes the name of the current branch eg: master to main
+29. git branch <branchname>     // create a new branch
+30. git checkout <branchname>   // navigate to a branch
+31. git branch -d <branchname>  // delete a branch 
 
-30. git merge <branchname> // While on a branch, merging with another branch will 
+32. git merge <branchname> // While on a branch, merging with another branch will 
                            // take the changes from that branch combine with this branch and create a new commit where the head points to.
 						   // For fast forward merges, there's no need for commit mesg but for divergent merges, there must be.
 
@@ -69,7 +71,11 @@ add --graph -all to see commits in all different branches
     ** It will appear in "git status" during merging and the code editor will also show the differences.
 	** Choose which change to keep and delete the other one, then make a new commit to resolve conflict. 
 
-31. git reset <SHA(7char) to which u want to move back> //This will perform the foll things based on the flags provided:
+33. git reset <SHA(7char) to which u want to move back> //This will perform the foll things based on the flags provided:
 	--mixed  // Default flag which moves the head pointer to where SHA commit is and move recent commit to working directory
     --soft   //Move the head pointer to where SHA commit is and move recent commit to staging index
 	--hard   //Move the head pointer to where SHA commit is and erase the recent commit
+
+34. git stash  // Stash changes so that you can switch to a different branch without committing changes
+35. git stash list // List the stashed changes
+36. git stash apply // Apply the changes that you had stashed previously
